@@ -10,26 +10,27 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-  // HttpLink,
-  ApolloLink,
-} from '@apollo/client';
+// import {
+//   ApolloClient,
+//   ApolloProvider,
+//   InMemoryCache,
+//   // HttpLink,
+//   ApolloLink,
+// } from '@apollo/client';
 
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './screens/HomeScreen';
-import AboutScreen from './screens/AboutScreen';
+// import HomeScreen from './screens/HomeScreen';
+// import AboutScreen from './screens/AboutScreen';
 
 import { mockedLink } from './mock';
+import CountrySearchScreen from './screens/CountrySearch';
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: mockedLink as unknown as ApolloLink, // new HttpLink('...'),
-});
+// const client = new ApolloClient({
+//   cache: new InMemoryCache(),
+//   link: mockedLink as unknown as ApolloLink, // new HttpLink('...'),
+// });
 
 const Stack = createStackNavigator();
 
@@ -76,17 +77,17 @@ const App: React.FC<Props> = ({ skipLoadingScreen }) => {
     );
   }
   return (
-    <ApolloProvider client={client}>
+    // <ApolloProvider client={client}>
       <NavigationNativeContainer>
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="About" component={AboutScreen} />
+            <Stack.Screen name="CountrySearch" component={CountrySearchScreen} />
+            
           </Stack.Navigator>
         </View>
       </NavigationNativeContainer>
-    </ApolloProvider>
+    // </ApolloProvider>
   );
 };
 
